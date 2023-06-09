@@ -1,0 +1,314 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,700;0,800;0,900;1,500;1,600&display=swap");
+
+:root {
+  --primary-background: #000;
+  --secondary-background: var(--ipt-baseAlt-shade3-bg, rgb(18, 18, 18));
+  --white-background: rgb(255, 255, 255);
+}
+
+body,
+html,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--primary-background);
+  color: #fff;
+  overflow-x: hidden;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Utility Classes */
+.btn {
+  cursor: pointer;
+}
+.bg-yellow {
+  color: rgb(245, 197, 24);
+}
+.flex {
+  display: flex;
+}
+.container {
+  width: 90vw;
+  margin-inline: auto;
+}
+
+/* header Section */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100vw;
+  background-color: var(--secondary-background);
+  border-bottom: 1px solid rgb(245, 197, 24);
+}
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.5rem;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+#logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 100%;
+  padding: 0.9rem;
+}
+#logo img {
+  width: 3rem;
+  background-color: #fff;
+  border-radius: 25px;
+}
+#logo #logo-title {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+#catagories {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+}
+.items {
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+.items:hover {
+  color: rgb(245, 197, 24);
+  transform: translateY(-1px);
+  cursor: pointer;
+}
+#search-wrapper {
+  position: relative;
+}
+#searchbar {
+  display: flex;
+  align-items: center;
+  border: 1px solid white;
+  background-color: var(--white-background);
+  height: 2.3rem;
+  width: 22rem;
+  border-radius: 8px;
+  gap: 0.9rem;
+  padding-inline: 1rem;
+}
+#serch-input {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  height: 100%;
+  font-size: 0.9rem;
+}
+#serch-input:focus {
+  outline: none;
+}
+#del-btn {
+  color: #000;
+  display: none;
+  cursor: pointer;
+}
+#del-btn.active {
+  display: block;
+}
+
+/* Search List */
+#search-list {
+  display: none;
+  max-height: 400px;
+  overflow-y: scroll;
+  background-color: var(--secondary-background);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  transform: translateY(100%);
+  border: 1px solid white;
+  border-radius: 8px;
+}
+#search-list.active {
+  display: block;
+}
+
+.search-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.527);
+}
+.search-item img {
+  height: 6rem;
+}
+
+.rating {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  bottom: 0.8rem;
+  right: 0.8rem;
+  background-color: rgb(93, 93, 241);
+  padding: 0.5rem;
+  height: 8px;
+  text-align: center;
+  margin: 0;
+}
+
+/* Showcase Section */
+
+#showcase {
+  margin-bottom: 2rem;
+}
+.title-section {
+  display: block;
+  margin-block: 2rem;
+  background-color: var(--secondary-background);
+  color: rgb(245, 197, 24);
+  font-weight: lighter;
+  text-transform: uppercase;
+  padding-block: 0.2rem;
+}
+.title-section h1 {
+  border-left: 2px solid rgb(245, 197, 24);
+  padding-left: 1rem;
+  position: relative;
+}
+.btn-return {
+  display: none;
+  height: 50px;
+  width: 50px;
+  align-self: center;
+  background: transparent;
+  border: none;
+  transition: all 0.25s ease-in;
+}
+.btn-return img {
+  width: 80%;
+}
+.btn-return:hover {
+  transform: translateX(-10px);
+}
+
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 2rem;
+}
+.card {
+  justify-self: center;
+  background-color: var(--secondary-background);
+  cursor: pointer;
+  width: min-content;
+  padding-inline: 1rem;
+  padding-top: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+}
+.card:hover {
+  transform: scale(1.03);
+}
+.upper-body {
+  height: 260px;
+  width: 195px;
+  background: url(/images/far-from-home.jpg) no-repeat center center/cover;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.lower-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.card img {
+  border-radius: 8px;
+}
+
+.movie-title {
+  text-transform: capitalize;
+  font: "sans-serif";
+  font-weight: 300;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Movie Showcase */
+
+.movie-wrapper {
+  background-color: var(--secondary-background);
+  margin-block: 3.5rem;
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  padding-block: 2rem;
+}
+#poster {
+  width: 300px;
+  height: 440px;
+  object-fit: cover;
+  object-position: center;
+}
+#poster img {
+  width: 100%;
+}
+.movie-info > div {
+  border-bottom: 1px solid rgba(245, 197, 24, 0.356);
+  width: 50ch;
+}
+.movie-info h5 {
+  font-weight: 300;
+}
+.movie-title {
+  align-items: center;
+  gap: 2rem;
+}
+.movie-title #year {
+  font-size: 1rem;
+}
+.movie-rating h5 {
+  align-items: center;
+  justify-content: flex-start;
+}
+.movie-rating img {
+  width: 35px;
+}
+.movie-rating p {
+  margin-inline-start: 2rem;
+}
+
+.plot {
+  border-bottom: 1px solid var(--secondary-background);
+}
+
+/* Footer */
+
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-background);
+  padding-block: 0.5rem;
+  font-size: 0.7rem;
+  border-top: 1px solid rgb(245, 197, 24);
+  z-index: 10;
+}

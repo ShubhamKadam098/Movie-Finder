@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./style/style.css" />
+    <script src="./script/script.js" defer></script>
+    <title>Movie Finder</title>
+  </head>
+  <body>
+    <!-- Navbar and header Section -->
+    <div class="header">
+      <div class="container">
+        <nav id="navbar">
+          <div id="logo">
+            <img src="./images/logo.png" alt="logo" id="logo-img" />
+            <h1 id="logo-title">Movie <span class="bg-yellow">Finder</span></h1>
+          </div>
+
+          <div id="search-wrapper">
+            <div id="searchbar">
+              <input type="search" id="serch-input" placeholder="Search" />
+              <span id="del-btn">&#10005;</span>
+            </div>
+            <div id="search-list"></div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Showcase Section -->
+    <div class="title-section">
+      <div class="container flex">
+        <button class="btn btn-return">
+          <img src="./images/return.png" alt="Return" />
+        </button>
+        <h1 id="main-title">Popular</h1>
+      </div>
+    </div>
+    <section id="showcase">
+      <div class="container">
+        <div class="card-wrapper"></div>
+      </div>
+    </section>
+
+    <!-- Movie Showcase -->
+    <section class="Movie-showcase"></section>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <p id="footer-text">
+        Copyright &reg; 2023 Movie Finder, Inc. - All Rights Reserved.
+      </p>
+    </footer>
+  </body>
+</html>
