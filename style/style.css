@@ -30,6 +30,18 @@ a {
 .btn {
   cursor: pointer;
 }
+
+.btn-search {
+  background-color: rgb(245, 197, 24);
+  border: none;
+  height: 100%;
+  padding-inline: 1rem;
+  border-left: 1px solid #00000059;
+}
+.btn-search img {
+  height: 20px;
+  width: 100%;
+}
 .bg-yellow {
   color: rgb(245, 197, 24);
 }
@@ -68,8 +80,7 @@ a {
 }
 #logo img {
   width: 3rem;
-  background-color: #fff;
-  border-radius: 25px;
+  background-color: var(--primary-background);
 }
 #logo #logo-title {
   font-size: 1.6rem;
@@ -101,7 +112,8 @@ a {
   width: 22rem;
   border-radius: 8px;
   gap: 0.9rem;
-  padding-inline: 1rem;
+  padding-inline-start: 1rem;
+  overflow: hidden;
 }
 #serch-input {
   background-color: transparent;
@@ -229,7 +241,6 @@ a {
 .upper-body {
   height: 260px;
   width: 195px;
-  background: url(/images/far-from-home.jpg) no-repeat center center/cover;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -251,7 +262,7 @@ a {
   overflow: hidden;
 }
 
-/* Movie Showcase */
+/* Movie Information */
 
 .movie-wrapper {
   background-color: var(--secondary-background);
@@ -300,9 +311,16 @@ a {
   border-bottom: 1px solid var(--secondary-background);
 }
 
+/* Movie Showcase */
+.Movie-showcase {
+  min-height: 65vh;
+}
+
 /* Footer */
 
-#footer {
+footer {
+  position: sticky;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -311,4 +329,17 @@ a {
   font-size: 0.7rem;
   border-top: 1px solid rgb(245, 197, 24);
   z-index: 10;
+}
+
+/*  Movie Not Found Section */
+
+#not-found {
+  display: none;
+  height: 80vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#not-found img {
+  width: 8rem;
 }
