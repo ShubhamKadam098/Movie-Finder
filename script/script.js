@@ -60,8 +60,7 @@ btnReturn.addEventListener("click", (e) => {
 });
 
 //      Get Popular Movies
-//document.addEventListener("load", getPopularMovies(API_URL));
-document.addEventListener("load", displayMovieCard(popularMovies));
+document.addEventListener("load", getPopularMovies(API_URL));
 
 function getPopularMovies(url) {
   fetch(url)
