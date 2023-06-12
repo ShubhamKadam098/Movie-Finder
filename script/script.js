@@ -56,6 +56,9 @@ delBtn.addEventListener("click", (e) => {
 btnReturn.addEventListener("click", (e) => {
   btnReturn.style.display = "none";
   mainTitle.innerHTML = "Popular";
+  mainTitle.style.fontWeight = "bold";
+  mainTitle.style.fontSize = "2rem";
+  getPopularMovies(API_URL);
 });
 
 //      Get Popular Movies
@@ -71,6 +74,7 @@ function getPopularMovies(url) {
 
 //      Display The Cards
 function displayMovieCard(results) {
+  removeNoMovieFound();
   cardWrapper.innerHTML = "";
   results.forEach((movies) => {
     const { title, poster_path, id } = movies;
@@ -102,26 +106,21 @@ function cardEventListener(element) {
 // Movie Search function
 searchBar.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (!searchInput.value) {
-    console.log("returned");
-    return;
-  }
   const searchUrl = `${BASE_URL}/search/movie?query=${searchInput.value}&include_adult=false&sort_by=vote_average.desc&language=en-US&page=1${API_KEY}`;
-
   fetch(searchUrl)
     .then((res) => res.json())
     .then((info) => {
       changeTitle(searchInput.value);
       addActive(btnReturn);
       if (info.results[0] == null) {
-        noMovieFound();
+        addNoMovieFound();
         return;
       }
       displayMovieCard(info.results);
     });
 });
 
-function noMovieFound() {
+function addNoMovieFound() {
   const body = document.querySelector("body");
   const footer = document.querySelector("footer");
   cardWrapper.innerHTML = "";
@@ -133,4 +132,11 @@ function noMovieFound() {
   `;
   section.style.display = "flex";
   body.insertBefore(section, footer);
+}
+function removeNoMovieFound() {
+  const noMovieSection = document.querySelector("#not-found");
+  if (!noMovieSection) return;
+  const body = document.querySelector("body");
+
+  body.removeChild(noMovieSection);
 }
