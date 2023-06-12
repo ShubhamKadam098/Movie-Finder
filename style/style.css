@@ -239,9 +239,8 @@ a {
 .upper-body {
   object-fit: cover;
   border-radius: 5px;
-  background: url(./images/image-Not-Available.png) no-repeat center
-    center/cover;
 }
+
 .lower-body {
   display: flex;
   align-items: center;

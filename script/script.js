@@ -16,7 +16,6 @@ const movieShowcase = document.querySelector(".Movie-showcase");
 
 let selectedMovieId = "";
 
-
 // Utility Functions
 function removeActive(element) {
   element.classList.remove("active");
@@ -66,14 +65,12 @@ function getPopularMovies(url) {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      popularMovies[0] = data.results;
       displayMovieCard(data.results);
     });
 }
 
 //      Display The Cards
 function displayMovieCard(results) {
-  console.log(results);
   cardWrapper.innerHTML = "";
   results.forEach((movies) => {
     const { title, poster_path, id } = movies;
