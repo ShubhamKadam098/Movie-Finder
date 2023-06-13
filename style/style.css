@@ -108,7 +108,7 @@ a {
 }
 #logo img {
   width: 3rem;
-  background-color: var(--primary-background);
+  background-color: transparent;
 }
 #logo #logo-title {
   font-size: 1.6rem;
@@ -224,6 +224,7 @@ a {
 }
 .card img {
   width: 100%;
+  border-radius: 8px;
 }
 .card:hover {
   transform: scale(1.015);
@@ -231,7 +232,8 @@ a {
 .upper-body {
   object-fit: cover;
   border-radius: 5px;
-  min-width: 5rem;
+  min-width: 6rem;
+  height: min-content;
 }
 
 .lower-body {
@@ -240,13 +242,9 @@ a {
   justify-content: center;
   overflow: hidden;
 }
-.card img {
-  border-radius: 8px;
-}
 
 .movie-title {
   text-transform: capitalize;
-  padding-inline: 1rem;
   font: "sans-serif";
   font-weight: 300;
   overflow: hidden;
@@ -260,23 +258,24 @@ a {
   background-color: var(--secondary-background);
   margin-block: 3.5rem;
   display: flex;
-  gap: 2.5rem;
+  gap: 1rem;
   align-items: flex-start;
   justify-content: space-evenly;
   padding-block: 2rem;
 }
+
 #poster {
-  width: 300px;
-  height: 440px;
+  display: flex;
+  width: 50%;
   object-fit: cover;
   object-position: center;
+  justify-content: center;
 }
 #poster img {
-  width: 100%;
+  width: 70%;
 }
 .movie-info > div {
   border-bottom: 1px solid rgba(245, 197, 24, 0.356);
-  width: 50ch;
 }
 .movie-info h5 {
   font-weight: 300;
@@ -291,6 +290,7 @@ a {
 .movie-rating h5 {
   align-items: center;
   justify-content: flex-start;
+  font-size: 1rem;
 }
 .movie-rating img {
   width: 35px;
@@ -298,9 +298,28 @@ a {
 .movie-rating p {
   margin-inline-start: 2rem;
 }
-
+#genre-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  max-width: 80%;
+}
+.genre-item {
+  padding: 0.3rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.411);
+  background-color: #f3ce13;
+}
+.movie-status h5 {
+  font-size: 1rem;
+}
 .plot {
   border-bottom: 1px solid var(--secondary-background);
+}
+.plot p {
+  max-width: 50ch;
 }
 
 /* Movie Showcase */

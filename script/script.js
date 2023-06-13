@@ -12,9 +12,6 @@ const mainTitle = document.querySelector("#main-title");
 const btnReturn = document.querySelector(".btn-return");
 // Showcase
 const cardWrapper = document.querySelector(".card-wrapper");
-const movieShowcase = document.querySelector(".Movie-showcase");
-
-let selectedMovieId = "";
 
 // Utility Functions
 function removeActive(element) {
@@ -72,8 +69,29 @@ function getPopularMovies(url) {
     });
 }
 
+// Movie Search function
+searchBar.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const searchUrl = `${BASE_URL}/search/movie?query=${searchInput.value}&include_adult=false&sort_by=vote_average.desc&language=en-US&page=1${API_KEY}`;
+  fetch(searchUrl)
+    .then((res) => res.json())
+    .then((info) => {
+      changeTitle(searchInput.value);
+      addActive(btnReturn);
+      // if (info.results[0] == null) {
+      //   addNoMovieFound();
+      //   return;
+      // }
+      displayMovieCard(info.results);
+    });
+});
+
 //      Display The Cards
 function displayMovieCard(results) {
+  if (results[0] == null) {
+    addNoMovieFound();
+    return;
+  }
   removeNoMovieFound();
   cardWrapper.innerHTML = "";
   results.forEach((movies) => {
@@ -84,7 +102,7 @@ function displayMovieCard(results) {
     const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
-      <div class="upper-body"><img class='skeleton' src="${poster}" alt="./images/Image-Not-Available.png"></div>
+      <div class="upper-body "><img src="${poster}" alt="./images/Image-Not-Available.png"></div>
       <div class="lowerbody">
       <h4 class="movie-title" data-id='${id}'>${truncate(title, 22, true)}</h4>
       </div>    
@@ -98,28 +116,11 @@ function displayMovieCard(results) {
 function cardEventListener(element) {
   element.addEventListener("click", (e) => {
     const title = element.querySelector("h4");
-    selectedMovieId = title.getAttribute("data-id");
-    console.log(selectedMovieId);
+    localStorage.setItem("selectedMovieId", title.getAttribute("data-id"));
+    window.location = "./movies.html";
   });
 }
-
-// Movie Search function
-searchBar.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const searchUrl = `${BASE_URL}/search/movie?query=${searchInput.value}&include_adult=false&sort_by=vote_average.desc&language=en-US&page=1${API_KEY}`;
-  fetch(searchUrl)
-    .then((res) => res.json())
-    .then((info) => {
-      changeTitle(searchInput.value);
-      addActive(btnReturn);
-      if (info.results[0] == null) {
-        addNoMovieFound();
-        return;
-      }
-      displayMovieCard(info.results);
-    });
-});
-
+//      Movie Not Found Section
 function addNoMovieFound() {
   const body = document.querySelector("body");
   const footer = document.querySelector("footer");
