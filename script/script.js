@@ -23,7 +23,6 @@ function addActive(element) {
 function changeTitle(value) {
   mainTitle.innerHTML = `Search For: '${value}'`;
   mainTitle.style.fontWeight = "300";
-  mainTitle.style.fontSize = "1.25rem";
 }
 function truncate(str, n, useWordBoundary) {
   if (str.length <= n) {
@@ -51,11 +50,7 @@ delBtn.addEventListener("click", (e) => {
 
 // Back Button Function
 btnReturn.addEventListener("click", (e) => {
-  btnReturn.style.display = "none";
-  mainTitle.innerHTML = "Popular";
-  mainTitle.style.fontWeight = "bold";
-  mainTitle.style.fontSize = "2rem";
-  getPopularMovies(API_URL);
+  window.location = "./index.html";
 });
 
 //      Get Popular Movies

@@ -49,6 +49,7 @@ a {
 }
 .btn-search img {
   transform: translateY(+3px);
+  background-color: var(--yellow-background);
   height: 24px;
   width: 100%;
   rotate: -5deg;
@@ -97,7 +98,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 4.5rem;
   margin-bottom: 0.5rem;
 }
 #logo {
@@ -111,8 +111,8 @@ a {
   background-color: transparent;
 }
 #logo #logo-title {
+  white-space: nowrap;
   font-size: 1.6rem;
-  font-weight: 400;
 }
 #catagories {
   display: flex;
@@ -133,14 +133,14 @@ a {
 }
 #searchbar {
   display: flex;
+  justify-content: space-between;
+  gap: 1rem;
   align-items: center;
   border: 1px solid rgba(255, 255, 255, 0.226);
   color: white;
   background-color: #10161d;
   height: 2.5rem;
-  width: 24rem;
   border-radius: 8px;
-  gap: 0.9rem;
   padding-inline-start: 1rem;
   overflow: hidden;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
@@ -150,7 +150,6 @@ a {
   background-color: inherit;
   color: white;
   border: none;
-  width: 100%;
   height: 100%;
   font-size: 0.9rem;
 }
@@ -182,11 +181,15 @@ a {
   text-transform: uppercase;
   padding-block: 0.2rem;
 }
+
 .title-section h1 {
-  font-size: 2rem;
   border-left: 2px solid var(--yellow-background);
   padding-left: 1rem;
   position: relative;
+}
+#main-title {
+  width: 100%;
+  font-size: 2rem;
 }
 .btn-return {
   display: none;
@@ -245,7 +248,6 @@ a {
 
 .movie-title {
   text-transform: capitalize;
-  font: "sans-serif";
   font-weight: 300;
   overflow: hidden;
   margin: 0;
@@ -261,7 +263,6 @@ a {
   gap: 1rem;
   align-items: flex-start;
   justify-content: space-evenly;
-  padding-block: 2rem;
 }
 
 #poster {
@@ -273,6 +274,9 @@ a {
 }
 #poster img {
   width: 70%;
+}
+.movie-info {
+  width: 50%;
 }
 .movie-info > div {
   border-bottom: 1px solid rgba(245, 197, 24, 0.356);
@@ -357,29 +361,88 @@ footer {
 /* Media Queries */
 /* Tablet */
 @media (width<=820px) {
+  #logo-img {
+    width: 2.5;
+  }
+  #logo-title {
+    height: 100%;
+    font-size: 1rem;
+  }
+  #main-title {
+    font-size: 1.5rem;
+  }
   .card-wrapper {
     grid-template-columns: repeat(3, 1fr);
   }
   #searchbar {
     max-width: 20rem;
   }
+  .movie-title {
+    font-size: 0.9rem;
+  }
+  .movie-wrapper {
+    flex-direction: column;
+  }
+  .movie-info {
+    width: 100%;
+  }
+  .movie-info > div {
+    padding-bottom: 1rem;
+  }
+  .movie-wrapper h3 {
+    font-size: 1rem;
+  }
+  #poster {
+    width: 100%;
+  }
+  #poster img {
+    align-self: center;
+    width: 50%;
+  }
+  .movie-wrapper h5 {
+    margin: 0;
+  }
+  .movie-title {
+    padding: 0;
+  }
+  .movie-rating p {
+    margin: 0;
+  }
+  .movie-navbar {
+    height: min-content;
+  }
 }
 /* Mobile */
 @media (width<=425px) {
   #navbar {
     flex-direction: column;
+    justify-content: space-around;
+    padding-block: 0.5rem;
+    gap: 0.4rem;
   }
   #logo {
     padding: 0;
+    height: min-content;
+    margin-block: 0.5rem;
   }
-  #logo-img {
-    width: 1.5rem;
+  #logo img {
+    width: 2rem;
   }
+
   #logo-title {
-    font-size: 0.7rem;
+    /* font-size: 0.8rem; */
+    font-weight: bold;
+    margin: 0;
   }
+  #searchbar {
+    height: 2.25rem;
+  }
+
   #main-title {
-    font-size: 1.5rem;
+    font-size: 1rem;
+  }
+  .title-section {
+    margin-top: 8rem;
   }
   .card-wrapper {
     grid-template-columns: repeat(2, 1fr);
@@ -387,7 +450,16 @@ footer {
   #searchbar {
     max-width: 20rem;
   }
+  #main-title {
+    font-size: 1rem;
+  }
+  .movie-title {
+    font-size: 0.7rem;
+  }
   body {
     font-size: 0.7rem;
+  }
+  #footer-text {
+    font-size: 0.5rem;
   }
 }

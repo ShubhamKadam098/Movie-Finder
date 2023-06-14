@@ -43,7 +43,6 @@ function showMovieInfo() {
       // Changing Heading
       headTitle.innerHTML = `Movie: '${original_title}'`;
       headTitle.style.fontWeight = "300";
-      headTitle.style.fontSize = "1.25rem";
       movieShowcase.innerHTML = "";
       // Adding the Details Section
       const div = document.createElement("div");
