@@ -41,7 +41,7 @@ function showMovieInfo() {
         poster = "./images/Image-Not-Available.png";
       else poster = data.poster_path;
       // Changing Heading
-      headTitle.innerHTML = `Related To: '${original_title}'`;
+      headTitle.innerHTML = `Movie: '${original_title}'`;
       headTitle.style.fontWeight = "300";
       headTitle.style.fontSize = "1.25rem";
       movieShowcase.innerHTML = "";

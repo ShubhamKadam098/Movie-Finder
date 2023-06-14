@@ -21,7 +21,7 @@ function addActive(element) {
   element.classList.add("active");
 }
 function changeTitle(value) {
-  mainTitle.innerHTML = `Related To: '${value}'`;
+  mainTitle.innerHTML = `Search For: '${value}'`;
   mainTitle.style.fontWeight = "300";
   mainTitle.style.fontSize = "1.25rem";
 }
@@ -72,16 +72,13 @@ function getPopularMovies(url) {
 // Movie Search function
 searchBar.addEventListener("submit", (e) => {
   e.preventDefault();
+  if (!searchInput.value) return;
+  addActive(btnReturn);
   const searchUrl = `${BASE_URL}/search/movie?query=${searchInput.value}&include_adult=false&sort_by=vote_average.desc&language=en-US&page=1${API_KEY}`;
   fetch(searchUrl)
     .then((res) => res.json())
     .then((info) => {
       changeTitle(searchInput.value);
-      addActive(btnReturn);
-      // if (info.results[0] == null) {
-      //   addNoMovieFound();
-      //   return;
-      // }
       displayMovieCard(info.results);
     });
 });

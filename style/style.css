@@ -310,7 +310,7 @@ a {
   padding: 0.3rem 0.9rem;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.411);
-  background-color: #f3ce13;
+  background-color: #f3ce13d5;
 }
 .movie-status h5 {
   font-size: 1rem;
