@@ -1,7 +1,9 @@
+import Header from "./header/Header";
+
 function App() {
   return (
     <>
-      <h1>Movie Finder</h1>
+      <Header />
     </>
   );
 }
