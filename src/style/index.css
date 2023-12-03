@@ -5,10 +5,15 @@
 
 body {
   font-family: -apple-system, "Poppins", ui-monospace, Courier, monospace;
+  background-color: #394351;
 }
 *,
 :after,
 :before {
   box-sizing: border-box;
   border: 0 solid #e5e7eb;
+}
+.container {
+  width: 90%;
+  margin-inline: auto;
 }
