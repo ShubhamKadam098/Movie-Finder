@@ -1,9 +1,8 @@
-import React from "react";
-import GithubIcon from "../assets/GithubIcon.svg";
+import GithubIcon from "../../assets/GithubIcon.svg";
 
 const Footer = () => {
   return (
-    <footer className="relative py-2 bg-slate-800 text-white border-t border-white border-solid">
+    <footer className="relative py-2 bg-[#1F2937] text-white border-t border-white border-solid">
       <div className="container flex items-center justify-center mx-auto px-2">
         <a
           href="https://github.com/ShubhamKadam098"

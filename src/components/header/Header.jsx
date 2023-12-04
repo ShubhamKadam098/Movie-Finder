@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../assets/logo.png";
+import logo from "../../assets/icon.png";
 
 const Header = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -9,11 +9,11 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="border-b-2 border-slate-800 dark:bg-gray-900">
+      <nav className="border-b-2 border-slate-800 dark:bg-[#1F2937]">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="/" className="flex items-center">
-            <img src={logo} className="h-8 mr-3" alt="" />
-            <span className="self-end text-2xl font-semibold whitespace-nowrap dark:text-white">
+          <a href="/" className="flex gap-4 flex-wrap">
+            <img src={logo} className="h-16" alt="" />
+            <span className="self-center h-min text-3xl font-semibold whitespace-nowrap dark:text-white">
               Movie Finder
             </span>
           </a>
