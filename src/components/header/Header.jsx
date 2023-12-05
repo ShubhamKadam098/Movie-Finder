@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../../assets/icon.png";
+import logo from "../../assets/logo.png";
 
 const Header = () => {
   const [isChecked, setIsChecked] = useState(false);
