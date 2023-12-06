@@ -18,8 +18,8 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<Layout />}>
         <Route path="" element={<Home />} />
-        <Route path="search" element={<Search />} />
-        <Route path="details" element={<Details />} />
+        <Route path="search/:query" element={<Search />} />
+        <Route path="details/:id" element={<Details />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </>
