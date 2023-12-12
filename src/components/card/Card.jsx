@@ -1,38 +1,41 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Card = ({ movieDetails }) => {
-  // eslint-disable-next-line no-unused-vars
   const [rating, setRating] = useState(4.5);
 
   useEffect(() => {
     console.log(movieDetails);
-  }, []);
+  }, [movieDetails]);
+
+  if (!movieDetails) {
+    return null; // or a placeholder indicating that movieDetails is not available
+  }
+
+  const { id, poster_path, original_title, release_date, vote_average } =
+    movieDetails;
+
+  const imgSrc = poster_path
+    ? `${import.meta.env.VITE_IMG_URL}${poster_path}`
+    : "https://via.placeholder.com/150"; // Placeholder image if poster_path is not available
 
   return (
-    <Link to={`/details/${movieDetails.id}`}>
-      <div className="max-w-xs border rounded-lg shadow bg-gray-800 border-gray-700 hover:scale-105 hover:ease-in-out hover:duration-150 overflow-hidden">
-        <a href="#">
-          <img
-            className="rounded-t-lg"
-            src={`${import.meta.env.VITE_IMG_URL + movieDetails.poster_path}`}
-            alt=""
-          />
-        </a>
+    <Link to={`/details/${id}`}>
+      <div className="aspect-[2/4] max-w-xs border rounded-lg shadow bg-gray-800 border-gray-700 hover:scale-105 hover:ease-in-out hover:duration-150 overflow-hidden">
+        <img className="rounded-t-lg" src={imgSrc} alt={original_title} />
         <div className="p-3 flex flex-col gap-2">
           <div className="max-h-12 overflow-hidden">
-            <a href="#">
-              <h5 className="text-[0.9rem] font-semibold tracking-tight text-white overflow-hidden whitespace-nowrap overflow-ellipsis">
-                {movieDetails.original_title}
-              </h5>
-            </a>
+            <h5 className="text-[0.9rem] font-semibold tracking-tight text-white overflow-hidden whitespace-nowrap overflow-ellipsis">
+              {original_title}
+            </h5>
           </div>
           <div className="flex justify-between items-center">
             <p className="text-gray-300 text-[0.85rem]">
-              {movieDetails.release_date.slice(0, 4)}
+              {release_date?.slice(0, 4)}
             </p>
             <div className="inline-flex items-center px-1 py-0.5 text-[0.75rem] font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none bg-yellow-400 hover:bg-yellow-500 focus:ring-yellow-600">
-              {movieDetails.vote_average}
+              {vote_average}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="15"
@@ -48,6 +51,21 @@ const Card = ({ movieDetails }) => {
       </div>
     </Link>
   );
+};
+
+Card.propTypes = {
+  movieDetails: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    poster_path: PropTypes.string,
+    original_title: PropTypes.string.isRequired,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number.isRequired,
+    // Add more PropTypes as per the actual structure of movieDetails
+  }),
+};
+
+Card.defaultProps = {
+  movieDetails: null, // Setting a default value for movieDetails
 };
 
 export default Card;
