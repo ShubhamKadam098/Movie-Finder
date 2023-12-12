@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../assets/logo.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -19,12 +19,12 @@ const Header = () => {
     <header className="border-slate-500 border-b-[1px] bg-[#1F2937] shadow-md text-white fixed w-full z-50 top-0 bg-opacity-50 backdrop-blur-xl rounded drop-shadow-lg">
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
-          <a href="/" className="flex items-center">
+          <Link to={"/"} className="flex items-center">
             <img src={logo} className="h-12 mr-3" alt="" />
             <span className="text-3xl font-semibold whitespace-nowrap">
               Movie Finder
             </span>
-          </a>
+          </Link>
           <div className="md:flex items-center">
             <button
               id="search-toggle"
@@ -102,7 +102,7 @@ const Header = () => {
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className=" border   text-sm rounded-lg   block w-full ps-10 p-2.5  bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                      placeholder="Search branch name..."
+                      placeholder="Search Movie"
                       required
                     />
                   </div>
