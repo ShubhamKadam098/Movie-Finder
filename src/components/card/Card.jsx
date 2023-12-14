@@ -4,13 +4,20 @@ import PropTypes from "prop-types";
 
 const Card = ({ movieDetails }) => {
   const [rating, setRating] = useState(4.5);
+  const [loading, setLoading] = useState(true); // New loading state
 
   useEffect(() => {
+    setLoading(true); // Set loading to true when movieDetails change
     console.log(movieDetails);
+    // Simulating delay to show skeleton loading
+    const timeout = setTimeout(() => {
+      setLoading(false); // Set loading to false after a delay (simulating data loading)
+    }, 1000); // Adjust this delay as needed
+    return () => clearTimeout(timeout);
   }, [movieDetails]);
 
   if (!movieDetails) {
-    return null; // or a placeholder indicating that movieDetails is not available
+    return null;
   }
 
   const { id, poster_path, original_title, release_date, vote_average } =
@@ -18,12 +25,19 @@ const Card = ({ movieDetails }) => {
 
   const imgSrc = poster_path
     ? `${import.meta.env.VITE_IMG_URL}${poster_path}`
-    : "https://via.placeholder.com/150"; // Placeholder image if poster_path is not available
+    : "https://via.placeholder.com/150";
 
   return (
     <Link to={`/details/${id}`}>
       <div className="aspect-[2/4] max-w-xs border rounded-lg shadow bg-gray-800 border-gray-700 hover:scale-105 hover:ease-in-out hover:duration-150 overflow-hidden">
-        <img className="rounded-t-lg" src={imgSrc} alt={original_title} />
+        {loading ? ( // Check loading state to render skeleton or image
+          <div
+            className="animate-pulse bg-gray-600 rounded-t-lg"
+            style={{ height: "300px" }}
+          />
+        ) : (
+          <img className="rounded-t-lg" src={imgSrc} alt={original_title} />
+        )}
         <div className="p-3 flex flex-col gap-2">
           <div className="max-h-12 overflow-hidden">
             <h5 className="text-[0.9rem] font-semibold tracking-tight text-white overflow-hidden whitespace-nowrap overflow-ellipsis">
@@ -60,12 +74,11 @@ Card.propTypes = {
     original_title: PropTypes.string.isRequired,
     release_date: PropTypes.string,
     vote_average: PropTypes.number.isRequired,
-    // Add more PropTypes as per the actual structure of movieDetails
   }),
 };
 
 Card.defaultProps = {
-  movieDetails: null, // Setting a default value for movieDetails
+  movieDetails: null,
 };
 
 export default Card;
