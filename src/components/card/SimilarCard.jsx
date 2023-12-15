@@ -10,14 +10,11 @@ const SimilarCard = ({ id }) => {
         import.meta.env.VITE_BASE_URL
       }movie/${id}/similar?language=en-U${import.meta.env.VITE_API_KEY}`;
       const response = await fetch(apiQuery);
-      console.log(apiQuery);
       if (!response.ok) {
         throw new Error("Network response was not ok.");
       }
       const data = await response.json();
       setSimilarMovie(data);
-      console.log("Similar Data:");
-      console.log(data);
     } catch (error) {
       console.error("There was a problem fetching the data:", error);
     }

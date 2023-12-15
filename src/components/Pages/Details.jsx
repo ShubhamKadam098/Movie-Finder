@@ -13,14 +13,11 @@ const Details = () => {
         import.meta.env.VITE_BASE_URL
       }movie/${id}?language=en-U${import.meta.env.VITE_API_KEY}`;
       const response = await fetch(apiQuery);
-      console.log(apiQuery);
       if (!response.ok) {
         throw new Error("Network response was not ok.");
       }
       const data = await response.json();
       setMovieDetails(data);
-      console.log("Movie details");
-      console.log(data);
     } catch (error) {
       console.error("There was a problem fetching the data:", error);
     }

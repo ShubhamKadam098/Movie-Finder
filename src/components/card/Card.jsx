@@ -4,15 +4,13 @@ import PropTypes from "prop-types";
 
 const Card = ({ movieDetails }) => {
   const [rating, setRating] = useState(4.5);
-  const [loading, setLoading] = useState(true); // New loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true); // Set loading to true when movieDetails change
-    console.log(movieDetails);
-    // Simulating delay to show skeleton loading
+    setLoading(true);
     const timeout = setTimeout(() => {
-      setLoading(false); // Set loading to false after a delay (simulating data loading)
-    }, 1000); // Adjust this delay as needed
+      setLoading(false);
+    }, 1000);
     return () => clearTimeout(timeout);
   }, [movieDetails]);
 
@@ -30,7 +28,7 @@ const Card = ({ movieDetails }) => {
   return (
     <Link to={`/details/${id}`}>
       <div className="aspect-[2/4] max-w-xs border rounded-lg shadow bg-gray-800 border-gray-700 hover:scale-105 hover:ease-in-out hover:duration-150 overflow-hidden">
-        {loading ? ( // Check loading state to render skeleton or image
+        {loading ? (
           <div
             className="animate-pulse bg-gray-600 rounded-t-lg"
             style={{ height: "300px" }}

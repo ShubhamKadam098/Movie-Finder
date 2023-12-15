@@ -26,7 +26,6 @@ const Search = () => {
       }
       const data = await response.json();
       setSearchMovieList(data.results);
-      console.log(data.results);
     } catch (error) {
       console.error("There was a problem fetching the data:", error);
     }
