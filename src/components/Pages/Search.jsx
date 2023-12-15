@@ -35,7 +35,7 @@ const Search = () => {
   return (
     <>
       <div className="bg-[#1F2937] py-6 rounded-lg pl-4 my-10">
-        <h1 className="font-normal text-2xl text-yellow-500 ">
+        <h1 className="font-normal text-xl text-yellow-500 ">
           Seach for: <span className="text-white">{query}</span>
         </h1>
       </div>

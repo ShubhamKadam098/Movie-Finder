@@ -40,7 +40,7 @@ const Card = ({ movieDetails }) => {
         )}
         <div className="p-3 flex flex-col gap-2">
           <div className="max-h-12 overflow-hidden">
-            <h5 className="text-[0.9rem] font-semibold tracking-tight text-white overflow-hidden whitespace-nowrap overflow-ellipsis">
+            <h5 className="text-[0.9rem] font-medium tracking-tight text-white overflow-hidden whitespace-nowrap overflow-ellipsis">
               {original_title}
             </h5>
           </div>

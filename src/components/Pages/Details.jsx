@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import StarRating from "../StarRating";
+import { useParams } from "react-router-dom";
+import StarRating from "../rating/StarRating";
+import SimilarCard from "../card/SimilarCard";
 
 const Details = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState({ backdrop_path: "" });
-
-  const [similarMovie, setSimilarMovie] = useState({});
 
   async function getMovieDetails() {
     try {
@@ -20,24 +19,7 @@ const Details = () => {
       }
       const data = await response.json();
       setMovieDetails(data);
-      console.log(data);
-    } catch (error) {
-      console.error("There was a problem fetching the data:", error);
-    }
-  }
-
-  async function getSimilarMovies() {
-    try {
-      const apiQuery = `${
-        import.meta.env.VITE_BASE_URL
-      }movie/${id}/similar?language=en-U${import.meta.env.VITE_API_KEY}`;
-      const response = await fetch(apiQuery);
-      console.log(apiQuery);
-      if (!response.ok) {
-        throw new Error("Network response was not ok.");
-      }
-      const data = await response.json();
-      setSimilarMovie(data);
+      console.log("Movie details");
       console.log(data);
     } catch (error) {
       console.error("There was a problem fetching the data:", error);
@@ -46,14 +28,13 @@ const Details = () => {
 
   useEffect(() => {
     getMovieDetails();
-    getSimilarMovies();
   }, [id]);
 
   return (
     <>
       {/* Backdrop */}
       <div className="w-full aspect-video my-10 relative border-slate-400 border rounded-xl overflow-hidden drop-shadow-2xl">
-        {movieDetails.backdrop_path != "" ? (
+        {movieDetails.backdrop_path ? (
           <>
             <div
               className="absolute inset-0 bg-center  bg-cover"
@@ -138,11 +119,13 @@ const Details = () => {
         </div>
         <div className="border-b border-slate-500 flex flex-col gap-4 py-4 ">
           <p className="font-semibold text-lg text-yellow-400">Revenue:</p>
-          <p>$ {movieDetails.revenue}</p>
+          <p>$ {movieDetails.revenue || "N/A"}</p>
         </div>
         <div className="border-b border-slate-500 flex flex-col gap-4 py-4 ">
           <p className="font-semibold text-lg text-yellow-400">Rating:</p>
-          <StarRating rating={movieDetails.vote_average} />
+          <div className="inline-flex items-center px-1 py-0.5 text-[0.75rem] font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none">
+            <StarRating rating={movieDetails.vote_average || 0} />
+          </div>
           <p className="text-slate-400 text-sm">
             {movieDetails.vote_count} global ratings
           </p>
@@ -150,52 +133,7 @@ const Details = () => {
       </div>
 
       {/* Similar card */}
-      <div className=" rounded-lg drop-shadow-2xl ">
-        <h1 className="text-yellow-400 font-bold text-lg mb-4">Similar</h1>
-        <div className="grid grid-cols-3 gap-4">
-          {/* card */}
-          {similarMovie.results
-            ? similarMovie.results.map((movie) =>
-                movie.poster_path !== "" ? (
-                  <Link
-                    key={movie.id}
-                    to={`/details/${movie.id}`}
-                    className="flex flex-col items-center h-24 p-2 overflow-hidden border rounded-lg shadow md:flex-row border-gray-800 bg-gray-700 hover:bg-gray-600 relative"
-                  >
-                    {/* Skeleton placeholder */}
-                    <div className="h-full aspect-[2/3] bg-gray-400 animate-pulse rounded-lg absolute "></div>
-
-                    {/* Actual image */}
-                    <img
-                      className="object-cover max-h-full rounded-lg md:h-auto md:rounded-lg opacity-0"
-                      src={`${import.meta.env.VITE_IMG_URL}${
-                        movie.poster_path
-                      }`}
-                      alt=""
-                      // Use onLoad to hide skeleton when image is loaded
-                      onLoad={(e) => {
-                        e.target.classList.remove("opacity-0");
-                        e.target.previousElementSibling.classList.add("hidden");
-                      }}
-                      // Add an onError handler in case the image fails to load
-                      onError={(e) => {
-                        e.target.src = "your-fallback-image-url"; // You can set a fallback image here
-                      }}
-                    />
-                    <div className="flex flex-col justify-between p-4 leading-normal grow">
-                      <h5 className="mb-2 text-sm font-semibold tracking-tight text-slate-300">
-                        {movie.title}
-                      </h5>
-                      <p className="mb-3 font text-gray-400">
-                        {movie.release_date.slice(0, 4)}
-                      </p>
-                    </div>
-                  </Link>
-                ) : null
-              )
-            : null}
-        </div>
-      </div>
+      <SimilarCard id={movieDetails.id} />
     </>
   );
 };
