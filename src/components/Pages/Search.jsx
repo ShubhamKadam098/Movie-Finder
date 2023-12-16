@@ -41,7 +41,9 @@ const Search = () => {
       {searchMovieList.length > 0 ? (
         <CardGrid movieList={searchMovieList} />
       ) : (
-        <h1 className="text-white">No movie found</h1>
+        <div className="flex items-center justify-center">
+          <h1 className="text-white font-semibold ">No movie found !!</h1>
+        </div>
       )}
     </>
   );
