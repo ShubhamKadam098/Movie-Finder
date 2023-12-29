@@ -1,7 +1,7 @@
 {
   "homepage": "https://shubhamkadam098.github.io/Movie-Finder/",
   "name": "movie-finder",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {

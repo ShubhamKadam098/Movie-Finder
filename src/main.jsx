@@ -4,7 +4,7 @@ import "./style/index.css";
 import {
   Route,
   RouterProvider,
-  createBrowserRouter,
+  createHashRouter,
   createRoutesFromElements,
 } from "react-router-dom";
 import Layout from "./Layout";
@@ -13,7 +13,7 @@ import Search from "./components/Pages/Search";
 import Details from "./components/Pages/Details";
 import PageNotFound from "./components/dummy/PageNotFound";
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Layout />}>
